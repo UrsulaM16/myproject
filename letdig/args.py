@@ -1,0 +1,1 @@
+text = '1.21 gigawatios'
