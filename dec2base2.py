@@ -1,33 +1,36 @@
 import math
+from abc import ABC, abstractmethod
 
-class poligono:
-    def __init__ (self, tipo, parametro1, parametro2:None):
-        self.tipo = tipo
-        self.param1 = parametro1
-        self.param2 = parametro2
 
-    def calcular_area(self):
-            if self.tipo == "triángulo":
-                return (math.sqrt(3) / 4) * self.param1 ** 2
-            elif self.tipo == "cuadrado":
-                return self.param1 ** 2
-            elif self.tipo == "círculo":
-                return math.pi * self.param1 ** 2
-            elif self.tipo == "rectángulo":
-                return self.param1 * self.param2
-            elif self.tipo == "pentágono":
-                perimetro = 5 * self.param1
-                return (perimetro * self.param2) / 2
-        
-    def calcular_perimetro(self):
-            if self.tipo == "triángulo":
-                return 3 * self.param1
-            elif self.tipo == "cuadrado":
-                return 4 * self.param1
-            elif self.tipo == "círculo":
-                return 2 * math.pi * self.param1
-            elif self.tipo == "rectángulo":
-                return 2 * (self.param1 + self.param2)
-            elif self.tipo == "pentágono":
-                return 5 * self.param1
-            
+class Poligono(ABC):
+    @abstractmethod
+    def area(self) -> float:
+        pass
+
+    @abstractmethod
+    def perimetro(self) -> float | None:
+        pass
+
+
+class Triangulo(Poligono):
+    def __init__(self, base: float, altura: float):
+        self.base: float = base
+        self.altura: float = altura
+
+    def area(self) -> float:
+        return 0.5 * self.base * self.altura
+
+    def perimetro(self) -> float:
+        # Supuesto que es equilátero
+        return 3 * self.base
+
+
+class Cuadrado(Poligono):
+    def __init__(self, lado: float):
+        self.lado: float = lado
+
+    def area(self) -> float:
+        return self.lado ** 2
+
+    def perimetro(self) -> float:
+        return 4 * self.lado

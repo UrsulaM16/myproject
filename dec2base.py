@@ -6,6 +6,7 @@ Ha de tener un metodo que calcule el area y otro para el perimetro.
 Implementar dos objetos de la clase y añadirle a cada uno de ellos 3 poligonos 
 mostrar para cada agregado el tipo de poligono , su perimetro y area.
 """
+
 import math #TRAE LA LIBRERIA DE FUNCIONES MATEMATICAS. sqrt(), math.pi
 from abc import ABC, abstractmethod 
 """from abc modulo de python import ABC-> la herramienta, la clase
